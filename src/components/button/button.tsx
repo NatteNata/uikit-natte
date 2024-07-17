@@ -16,6 +16,7 @@ export function Button<T extends ElementType = "button">({
   as,
   ...rest
 }: ButtonProps<T>) {
+
   const Component = as ?? "button";
 
   return (
@@ -30,3 +31,5 @@ export function Button<T extends ElementType = "button">({
     />
   );
 }
+
+Button.displayName = "Button"
