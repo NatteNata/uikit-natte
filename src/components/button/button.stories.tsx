@@ -5,9 +5,12 @@ const meta = {
     component: Button,
     title: "Components/Button",
     tags: ["autodocs"],
+
 } satisfies Meta<typeof Button>;
 
 export default meta;
+
+
 
 const createBtnStory = (children, variant, pseudo = {}, disabled = false) => ({
     args: {
@@ -37,6 +40,11 @@ export const OutlinedBtn = {
         children: "Outlined button",
         variant: 'outlined'
     },
+    parameters: {
+        pseudo: {
+            hover: true
+        }
+    }
 };
 
 export const AlertOnClick = {
