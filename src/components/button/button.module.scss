@@ -7,7 +7,6 @@
   border-radius: 2px;
   color: #fff;
 
-
   &:focus-visible {
     outline: 2px solid var(--color-info-500);
   }
@@ -16,12 +15,17 @@
 .primary {
   background-color: var(--color-primary-500);
 
-  &:active, &:focus {
-    background-color: var(--color-primary-700);
-  }
-
   &:hover {
     background-color: var(--color-primary-900);
+  }
+
+  &:active {
+    background-color: var(--color-primary-500);
+  }
+
+  &:focus {
+    background-color: var(--color-primary-500);
+    border: 2px solid var(--color-primary-700);
   }
 
   &:disabled {
@@ -33,14 +37,81 @@
 
 .secondary {
   background-color: var(--color-dark-300);
+
+  &:hover {
+    background-color: var(--color-dark-100);
+  }
+
+  &:active {
+    background-color: var(--color-dark-700);
+  }
+
+  &:focus {
+    background-color: var(--color-dark-300);
+    border: 1px solid var(--color-primary-300);
+  }
+
+  &:disabled {
+    background-color: var(--color-dark-500);
+    color: var(--color-light-900);
+    cursor: default;
+  }
 }
 
 .outlined {
   background-color: inherit;
-  color: var(--color-accent-500);
+  color: var(--color-primary-500);
   border: 1px solid currentColor;
+
+  &:hover {
+    color: var(--color-primary-100);
+    border: 1px solid currentColor;
+  }
+
+  &:active {
+    color: var(--color-primary-700);
+    border: 1px solid currentColor;
+  }
+
+  &:focus {
+    color: var(--color-primary-700);
+    border: 2px solid currentColor;
+  }
+
+  &:disabled {
+    color: var(--color-primary-900);
+    border: 1px solid currentColor;
+    cursor: default;
+  }
+}
+
+.ghost {
+  background-color: inherit;
+  color: var(--color-primary-500);
+  border: none;
+
+  &:hover {
+    color: var(--color-primary-100);
+  }
+
+  &:active {
+    color: var(--color-primary-700);
+  }
+
+  &:focus {
+    color: var(--color-primary-700);
+    border: 2px solid currentColor;
+  }
+
+  &:disabled {
+    color: var(--color-primary-900);
+    cursor: default;
+  }
 }
 
 .fullWidth {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }

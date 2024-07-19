@@ -1,53 +1,132 @@
-import {Button} from "./button";
-import {type Meta} from "@storybook/react";
+import { type Meta } from '@storybook/react'
+
+import { Button } from './button'
 
 const meta = {
-    component: Button,
-    title: "Components/Button",
-    tags: ["autodocs"],
-
-} satisfies Meta<typeof Button>;
-
-export default meta;
-
-
-
-const createBtnStory = (children, variant, pseudo = {}, disabled = false) => ({
-    args: {
-        children,
-        variant,
-        disabled
+  argTypes: {
+    as: {
+      control: {
+        type: 'radio',
+      },
+      options: ['button', 'a'],
     },
-    parameters: {
-        pseudo
-    }
-})
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+    },
+  },
+  component: Button,
+  tags: ['autodocs'],
+  title: 'Components/Button',
+} satisfies Meta<typeof Button>
+
+export default meta
+
+const defaultArgs = {
+  children: 'Button',
+  disabled: false,
+  type: 'button',
+  variant: 'primary',
+}
 
 export const PrimaryBtn = {
-    args: {
-        children: "Default button",
-        variant: 'primary',
+  args: {
+    ...defaultArgs,
+  },
+  name: 'Primary button',
+}
+
+export const PrimaryBtnHover = {
+  args: {
+    ...defaultArgs,
+  },
+  name: 'Primary button - hover',
+  parameters: {
+    pseudo: {
+      hover: true,
     },
-};
+  },
+}
 
-export const PrimaryBtnActive = createBtnStory("Primary button Active", 'primary', {active: true})
-export const PrimaryBtnHover = createBtnStory("Primary button Hover", 'primary', {hover: true})
-export const PrimaryBtnFocus = createBtnStory("Primary button Focus", 'primary', {focus: true})
-export const PrimaryBtnDisabled = createBtnStory("Primary button Disabled", 'primary', {}, true)
-
-export const OutlinedBtn = {
-    args: {
-        children: "Outlined button",
-        variant: 'outlined'
+export const PrimaryBtnActive = {
+  args: {
+    ...defaultArgs,
+  },
+  name: 'Primary button - active',
+  parameters: {
+    pseudo: {
+      active: true,
     },
-    parameters: {
-        pseudo: {
-            hover: true
-        }
-    }
-};
+  },
+}
 
-export const AlertOnClick = {
+export const PrimaryBtnFocus = {
+  args: {
+    ...defaultArgs,
+    children: 'Primary focus',
+  },
+  name: 'Primary button - focus',
+  parameters: {
+    pseudo: {
+      focus: true,
+    },
+  },
+}
+
+export const PrimaryBtnDisabled = {
+  args: {
+    ...defaultArgs,
+    disabled: true,
+  },
+  name: 'Primary button disabled',
+}
+
+export const OutlinedBtnHover = {
+  args: {
+    ...defaultArgs,
+    variant: 'outlined',
+  },
+  name: 'Outlined -- hover',
+  parameters: {
+    pseudo: {
+      hover: true,
+    },
+  },
+}
+
+export const OutlinedBtnDisabled = {
+  args: {
+    ...defaultArgs,
+    disabled: true,
+    variant: 'outlined',
+  },
+  name: 'Outlined -- disabled',
+}
+
+export const SecondaryBtnFocus = {
+  args: {
+    ...defaultArgs,
+    variant: 'secondary',
+  },
+  name: 'Secondary -- focus',
+  parameters: {
+    pseudo: {
+      hover: true,
+    },
+  },
+}
+
+export const SecondaryBtnDisabled = {
+  args: {
+    ...defaultArgs,
+    disabled: true,
+    variant: 'secondary',
+  },
+  name: 'Secondary -- disabled',
+}
+
+/*export const AlertOnClick = {
     args: {
         children: "Alert!",
         onClick: () => alert("Button clicked"),
@@ -61,4 +140,4 @@ export const ButtonAsLink = {
         href: "https://google.com",
         target: "_blank",
     },
-};
+};*/
