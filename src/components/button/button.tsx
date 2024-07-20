@@ -11,14 +11,7 @@ export type ButtonProps<T extends ElementType = 'button'> = {
 } & ComponentPropsWithoutRef<T>
 
 export function Button<T extends ElementType = 'button'>(props: ButtonProps<T>) {
-  const {
-    as,
-    className,
-    fullWidth = false,
-    variant = 'primary',
-
-    ...rest
-  } = props
+  const { as, className, fullWidth = false, variant = 'primary', ...rest } = props
   const Component = as ?? 'button'
 
   return (

@@ -1,12 +1,28 @@
-import { type Meta } from '@storybook/react'
+import { type ComponentProps } from 'react'
+
+import { type Meta, type StoryObj } from '@storybook/react'
 
 import { Button } from './button'
+
+// TODO переключение as в автодоках, как работает?
+// Custom metadata for a story - parameters - похоже нужна отдельная типизация
+
+type StoryProps = ComponentProps<typeof Button>
+type Story = Partial<Parameters> & StoryObj<StoryProps>
+
+type Parameters = {
+  pseudo: {
+    active: boolean
+    focus: boolean
+    hover: boolean
+  }
+}
 
 const meta = {
   argTypes: {
     as: {
       control: {
-        type: 'radio',
+        type: 'select',
       },
       options: ['button', 'a'],
     },
@@ -23,21 +39,21 @@ const meta = {
 
 export default meta
 
-const defaultArgs = {
+const defaultArgs: StoryProps = {
   children: 'Button',
   disabled: false,
   type: 'button',
   variant: 'primary',
 }
 
-export const PrimaryBtn = {
+export const PrimaryBtn: Story = {
   args: {
     ...defaultArgs,
   },
   name: 'Primary button',
 }
 
-export const PrimaryBtnHover = {
+export const PrimaryBtnHover: Story = {
   args: {
     ...defaultArgs,
   },
@@ -49,7 +65,7 @@ export const PrimaryBtnHover = {
   },
 }
 
-export const PrimaryBtnActive = {
+export const PrimaryBtnActive: Story = {
   args: {
     ...defaultArgs,
   },
@@ -61,7 +77,7 @@ export const PrimaryBtnActive = {
   },
 }
 
-export const PrimaryBtnFocus = {
+export const PrimaryBtnFocus: Story = {
   args: {
     ...defaultArgs,
     children: 'Primary focus',
@@ -74,7 +90,7 @@ export const PrimaryBtnFocus = {
   },
 }
 
-export const PrimaryBtnDisabled = {
+export const PrimaryBtnDisabled: Story = {
   args: {
     ...defaultArgs,
     disabled: true,
@@ -82,7 +98,7 @@ export const PrimaryBtnDisabled = {
   name: 'Primary button disabled',
 }
 
-export const OutlinedBtnHover = {
+export const OutlinedBtnHover: Story = {
   args: {
     ...defaultArgs,
     variant: 'outlined',
@@ -95,7 +111,7 @@ export const OutlinedBtnHover = {
   },
 }
 
-export const OutlinedBtnDisabled = {
+export const OutlinedBtnDisabled: Story = {
   args: {
     ...defaultArgs,
     disabled: true,
@@ -104,7 +120,7 @@ export const OutlinedBtnDisabled = {
   name: 'Outlined -- disabled',
 }
 
-export const SecondaryBtnFocus = {
+export const SecondaryBtnFocus: Story = {
   args: {
     ...defaultArgs,
     variant: 'secondary',
@@ -117,7 +133,7 @@ export const SecondaryBtnFocus = {
   },
 }
 
-export const SecondaryBtnDisabled = {
+export const SecondaryBtnDisabled: Story = {
   args: {
     ...defaultArgs,
     disabled: true,
@@ -126,18 +142,18 @@ export const SecondaryBtnDisabled = {
   name: 'Secondary -- disabled',
 }
 
-/*export const AlertOnClick = {
-    args: {
-        children: "Alert!",
-        onClick: () => alert("Button clicked"),
-    },
-};
+export const AlertOnClick: Story = {
+  args: {
+    ...defaultArgs,
+    onClick: () => alert('Button clicked'),
+  },
+}
 
-export const ButtonAsLink = {
-    args: {
-        children: "This is a link",
-        as: "a",
-        href: "https://google.com",
-        target: "_blank",
-    },
-};*/
+export const ButtonAsLink: Story = {
+  args: {
+    as: 'a',
+    children: 'This is a link',
+    href: 'https://google.com',
+    target: '_blank',
+  },
+}
