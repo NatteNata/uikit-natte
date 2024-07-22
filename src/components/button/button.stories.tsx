@@ -8,13 +8,15 @@ import { Button } from './button'
 // Custom metadata for a story - parameters - похоже нужна отдельная типизация
 
 type StoryProps = ComponentProps<typeof Button>
-type Story = Partial<Parameters> & StoryObj<StoryProps>
+type Story = StoryObj<StoryProps> & StoryParameters
 
-type Parameters = {
-  pseudo: {
-    active: boolean
-    focus: boolean
-    hover: boolean
+type StoryParameters = {
+  parameters?: {
+    pseudo?: {
+      active?: boolean
+      focus?: boolean
+      hover?: boolean
+    }
   }
 }
 
